@@ -1,0 +1,65 @@
+{
+  "name": "typescript-react-redux-seed",
+  "version": "0.1.0",
+  "description": "Web application backed by TypeScript, React and Redux",
+  "main": "dist/index.js",
+  "scripts": {
+    "install": "tsd --config tsd.json reinstall --overwrite",
+    "clean": "rm -rfv dist && rm -rfv {src,test}/*.{js,js.msp}",
+    "build": "npm run clean && tsc && npm run dist",
+    "build:test": "npm run clean && tsc",
+    "dist": "mkdir -pv dist && mv -v src/*.{js,js.map} dist/",
+    "start": "npm run build && node dist/index.js",
+    "test": "npm run build:test && npm run istanbul",
+    "test-not-working": "npm run build && npm run istanbul && npm run test:report",
+    "test:watch": "npm run build:test && npm run istanbul:watch",
+    "test:mocha": "npm run build:test && npm run mocha",
+    "test:report": "codeclimate-test-reporter < coverage/lcov.ts.info",
+    "mocha": "mocha --compilers ts:espower-typescript/guess test/*.spec.ts",
+    "istanbul": "istanbul cover _mocha -- --compilers ts:espower-typescript/guess test/*.spec.ts && npm run istanbul:remap",
+    "istanbul:remap": "remap-istanbul -i coverage/coverage.json -o coverage/lcov.ts.info -t lcovonly",
+    "istanbul:watch": "istanbul cover _mocha -- --compilers ts:espower-typescript/guess test/*.spec.ts -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tkqubo/typescript-react-redux-seed.git"
+  },
+  "keywords": [
+    "TypeScript",
+    "React",
+    "Redux"
+  ],
+  "author": "tkqubo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tkqubo/typescript-react-redux-seed/issues"
+  },
+  "homepage": "https://github.com/tkqubo/typescript-react-redux-seed#readme",
+  "devDependencies": {
+    "codeclimate-test-reporter": "^0.3.1",
+    "espower-typescript": "^4.0.0",
+    "gulp": "^3.9.0",
+    "istanbul": "^0.4.2",
+    "jest-cli": "^0.8.2",
+    "mocha": "^2.4.5",
+    "power-assert": "^1.2.0",
+    "remap-istanbul": "^0.5.1",
+    "sinon": "^1.17.3",
+    "tsd": "^0.6.5",
+    "typescript": "^1.8.0",
+    "webpack": "^1.12.12"
+  },
+  "dependencies": {
+    "classnames": "^2.2.3",
+    "express": "^4.13.4",
+    "history": "^1.17.0",
+    "lodash": "^4.2.1",
+    "react": "^0.14.7",
+    "react-dom": "^0.14.7",
+    "react-redux": "^4.2.1",
+    "react-router": "^1.0.3",
+    "react-router-redux": "^3.0.0",
+    "redux": "^3.2.1",
+    "yargs": "^3.32.0"
+  }
+}
