@@ -56,6 +56,7 @@
     "express": "^4.13.4",
     "flux-standard-action": "^0.6.1",
     "history": "^1.17.0",
+    "jquery": "^2.2.0",
     "lodash": "^4.2.1",
     "object-assign": "^4.0.1",
     "react": "^0.14.7",

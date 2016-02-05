@@ -5,12 +5,11 @@ import {Action} from 'flux-standard-action';
 const assign = require('object-assign');
 /* tslint:enable */
 
-
 // ducks type definitions
 
-const MORNING: string = 'greeting/morning';
-const AFTERNOON: string = 'greeting/afternoon';
-const EVENING: string = 'greeting/evening';
+const MORNING = 'greeting/morning';
+const AFTERNOON = 'greeting/afternoon';
+const EVENING = 'greeting/evening';
 
 export interface GreetingAction {
   name: string;
@@ -22,9 +21,9 @@ export interface Greeting {
 }
 
 
-// initial value
+// initial state
 
-export const initialGreeting: Greeting = {
+export const initialState: Greeting = {
   name: 'guest',
   message: 'hi',
 };
@@ -32,7 +31,7 @@ export const initialGreeting: Greeting = {
 
 // reducer
 
-export default function reducers(state: Greeting = initialGreeting, action: Action<GreetingAction>): Greeting {
+export function reducers(state: Greeting = initialState, action: Action<GreetingAction>): Greeting {
   'use strict';
   switch (action.type) {
     case MORNING:

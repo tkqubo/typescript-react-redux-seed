@@ -1,11 +1,21 @@
 'use strict';
 import * as Redux from 'redux';
-import {default as greeting, initialGreeting } from './greeting';
+import * as greeting from './greeting';
+import * as tags from './tags';
 
-export default Redux.combineReducers({ greeting });
+export default Redux.combineReducers({
+  greeting: greeting.reducers,
+  tags: tags.reducers,
+});
 
-export const initialState: any = {
-  greeting: initialGreeting
+export interface RootState {
+  greeting: greeting.Greeting;
+  tags: tags.Tag[];
+}
+
+export const initialState: RootState = {
+  greeting: greeting.initialState,
+  tags: tags.initialState,
 };
 
 

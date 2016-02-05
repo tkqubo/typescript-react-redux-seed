@@ -3,6 +3,8 @@ import * as React from 'react';
 import * as Redux from 'redux';
 import * as ReactRouter from 'react-router';
 import * as ReactRedux from 'react-redux';
+
+import {RootState} from '../redux/modules/index';
 import * as greeting from '../redux/modules/greeting';
 
 interface IndexProps extends ReactRouter.RouteComponentProps<{}, {}>, greeting.GreetingActionCreator {
@@ -11,7 +13,7 @@ interface IndexProps extends ReactRouter.RouteComponentProps<{}, {}>, greeting.G
 }
 
 @ReactRedux.connect(
-  (state: IndexProps) => state,
+  (state: RootState) => state,
   (dispatch: Redux.Dispatch) => Redux.bindActionCreators(greeting.greetingActionCreator, dispatch)
 )
 export class Index extends React.Component<IndexProps, {}> {
