@@ -14,7 +14,7 @@ export class Details extends React.Component<DetailsProps, {}> {
   render(): JSX.Element {
     return (
       <div>
-        <h1>Detail page</h1>
+        <h2>Detail</h2>
         <div>
           <a href='#' onClick={this.handleBack.bind(this)}>Back</a>
           <hr />

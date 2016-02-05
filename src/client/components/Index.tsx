@@ -26,8 +26,9 @@ export class Index extends React.Component<IndexProps, {}> {
   render(): JSX.Element {
     return (
       <div>
+        <h2>Index</h2>
         <button onClick={this.handleButton.bind(this)}>Greet to Bob in the morning</button>
-        <h2>{this.props.greeting.message}</h2>
+        <h3>{this.props.greeting.message}</h3>
         <hr />
         <button onClick={this.handleMove.bind(this)}>To the details</button>
       </div>

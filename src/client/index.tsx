@@ -7,19 +7,16 @@ import * as ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
 import * as history from 'history';
 import {Router, Route, IndexRoute} from 'react-router';
-import * as ReactRouterRedux from 'react-router-redux';
-/* tslint:disable */
-import thunk = require('redux-thunk');
-/* tslint:enable */
 
-import reducer, {initialState} from './redux/modules/index';
+import configureStore from './redux/configureStore';
+
+import DevTools from './containers/DevTools';
 import {App} from './containers/App';
 import {Details} from './components/Details';
 import {Index} from './components/Index';
 
 let browserHistory = history.createHashHistory();
-let createStoreWithMiddleware = Redux.applyMiddleware(ReactRouterRedux.syncHistory(browserHistory), thunk)(Redux.createStore);
-let store: Redux.Store = createStoreWithMiddleware(reducer, initialState);
+let store: Redux.Store = configureStore(browserHistory);
 let router = (
   <Router history = {browserHistory} >
     <Route path='/' component={App}>
@@ -31,7 +28,10 @@ let router = (
 
 ReactDOM.render(
   <Provider store={store}>
-    {router}
+    <div>
+      {router}
+      <DevTools />
+    </div>
   </Provider>,
   document.getElementById('content')
 );

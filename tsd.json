@@ -163,6 +163,15 @@
     },
     "redux-thunk/redux-thunk.d.ts": {
       "commit": "4ec3c5bf291bc02f49eb30c1077340b235165c67"
+    },
+    "redux-devtools/redux-devtools.d.ts": {
+      "commit": "4ec3c5bf291bc02f49eb30c1077340b235165c67"
+    },
+    "redux-devtools-log-monitor/redux-devtools-log-monitor.d.ts": {
+      "commit": "4ec3c5bf291bc02f49eb30c1077340b235165c67"
+    },
+    "redux-devtools-dock-monitor/redux-devtools-dock-monitor.d.ts": {
+      "commit": "4ec3c5bf291bc02f49eb30c1077340b235165c67"
     }
   }
 }
