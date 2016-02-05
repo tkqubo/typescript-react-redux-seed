@@ -1,5 +1,5 @@
 'use strict';
-import {Action} from 'flux-standard-action';
+import {createAction, handleActions} from 'redux-actions';
 import * as $ from 'jquery';
 /* tslint:disable */
 const assign = require('object-assign');
@@ -22,22 +22,20 @@ export const initialState: Tag[] = [];
 
 // reducer
 
-export function reducers(state: Tag[] = [], action: Action<Tag[]>): Tag[] {
-  'use strict';
-  switch (action.type) {
-    case REQUEST:
-      return [];
-    case SUCCESS:
-      return action.payload;
-    case FAILURE:
-      return [];
-    default:
-      return state;
-  }
-};
-
+export const reducers = handleActions<Tag[]>(
+  {
+    [REQUEST]: () => [],
+    [SUCCESS]: (state, action) => action.payload,
+    [FAILURE]: () => [],
+  },
+  []
+);
 
 // action creators
+
+export const request = createAction(REQUEST);
+export const success = createAction(SUCCESS);
+export const failure = createAction(FAILURE);
 
 export interface TagActionCreator {
   getTags?: () => (dispatch: Redux.Dispatch) => any;
@@ -55,17 +53,3 @@ export const tagActionCreator: TagActionCreator = {
   },
 };
 
-export function request(): Action<Tag[]> {
-  'use strict';
-  return { type: REQUEST };
-}
-
-export function success(tags: Tag[]): Action<Tag[]> {
-  'use strict';
-  return { type: SUCCESS, payload: tags };
-}
-
-export function failure(): Action<Tag[]> {
-  'use strict';
-  return { type: FAILURE };
-}

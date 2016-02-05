@@ -43,6 +43,7 @@
     "jest-cli": "^0.8.2",
     "mocha": "^2.4.5",
     "power-assert": "^1.2.0",
+    "redux-actions": "^0.9.1",
     "remap-istanbul": "^0.5.1",
     "sinon": "^1.17.3",
     "ts-loader": "^0.8.0",

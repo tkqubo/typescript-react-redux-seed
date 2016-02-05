@@ -1,4 +1,5 @@
 'use strict';
+import {createAction, handleActions} from 'redux-actions';
 import {} from 'redux';
 import {Action} from 'flux-standard-action';
 /* tslint:disable */
@@ -7,6 +8,7 @@ const assign = require('object-assign');
 
 // ducks type definitions
 
+const NULL = 'greeting/null';
 const MORNING = 'greeting/morning';
 const AFTERNOON = 'greeting/afternoon';
 const EVENING = 'greeting/evening';
@@ -31,25 +33,21 @@ export const initialState: Greeting = {
 
 // reducer
 
-export function reducers(state: Greeting = initialState, action: Action<GreetingAction>): Greeting {
-  'use strict';
-  switch (action.type) {
-    case MORNING:
-      return assign({}, state, { message: `Good morning, ${action.payload.name}` });
-    case AFTERNOON:
-      return assign({}, state, { message: `Hello, ${action.payload.name}` });
-    case EVENING:
-      return assign({}, state, { message: `Good evening, ${action.payload.name}` });
-    default:
-      return state;
-  }
-};
-
+export const reducers = handleActions<GreetingAction>(
+  {
+    [NULL]: (state, action) => assign({}, state, { message: undefined }),
+    [MORNING]: (state, action) => assign({}, state, { message: `Good morning, ${action.payload.name}` }),
+    [AFTERNOON]: (state, action) => assign({}, state, { message: `Good morning, ${action.payload.name}` }),
+    [EVENING]: (state, action) => assign({}, state, { message: `Good morning, ${action.payload.name}` }),
+  },
+  initialState
+);
 
 // action creators
 
 export interface GreetingActionCreator {
   greetInTheMorningAsync?: (name: string) => (dispatch: Redux.Dispatch) => any;
+  notGreet?: () => Action<GreetingAction>;
   greetInTheMorning?: (name: string) => Action<GreetingAction>;
   greetInTheAfternoon?: (name: string) => Action<GreetingAction>;
   greetInTheEvening?: (name: string) => Action<GreetingAction>;
@@ -58,33 +56,15 @@ export interface GreetingActionCreator {
 export const greetingActionCreator: GreetingActionCreator = {
   greetInTheMorningAsync(name: string): (dispatch: Redux.Dispatch) => any {
     return (dispatch: Redux.Dispatch) => {
+      dispatch(greetingActionCreator.notGreet());
       setTimeout(dispatch.bind(undefined, greetingActionCreator.greetInTheMorning(name)), 500);
     };
   },
 
-  greetInTheMorning(name: string): Action<GreetingAction> {
-    'use strict';
-    return {
-      type: MORNING,
-      payload: { name },
-    };
-  },
-
-  greetInTheAfternoon(name: string): Action<GreetingAction> {
-    'use strict';
-    return {
-      type: AFTERNOON,
-      payload: { name },
-    };
-  },
-
-  greetInTheEvening(name: string): Action<GreetingAction> {
-    'use strict';
-    return {
-      type: EVENING,
-      payload: { name },
-    };
-  },
+  notGreet: createAction(NULL),
+  greetInTheMorning: createAction(MORNING, name => ({name})),
+  greetInTheAfternoon: createAction(AFTERNOON, name => ({name})),
+  greetInTheEvening: createAction(EVENING, name => ({name})),
 };
 
 

@@ -172,6 +172,9 @@
     },
     "redux-devtools-dock-monitor/redux-devtools-dock-monitor.d.ts": {
       "commit": "4ec3c5bf291bc02f49eb30c1077340b235165c67"
+    },
+    "redux-actions/redux-actions.d.ts": {
+      "commit": "4ec3c5bf291bc02f49eb30c1077340b235165c67"
     }
   }
 }
