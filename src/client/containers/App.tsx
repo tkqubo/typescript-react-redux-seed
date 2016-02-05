@@ -1,31 +1,16 @@
 'use strict';
-import * as Redux from 'redux';
 import * as React from 'react';
-import {connect} from 'react-redux';
-import * as greeting from '../redux/modules/greeting';
+import * as ReactRouter from 'react-router';
 
-export interface AppProp extends greeting.GreetingActionCreator {
-  title?: string;
-  greeting?: greeting.Greeting;
-}
-
-@connect(
-  (state: AppProp) => state,
-  (dispatch: Redux.Dispatch) => Redux.bindActionCreators(greeting.greetingActionCreator, dispatch)
-)
-export class App extends React.Component<AppProp, {}> {
-  handleButton(): void {
-    this.props.greetInTheMorningAsync('Bob');
-  }
-
+export class App extends React.Component<ReactRouter.RouteComponentProps<{}, {}>, {}> {
+  private border: any = {border: 'solid #eee'};
   render(): JSX.Element {
     return (
       <div>
-        <h1>{this.props.title}</h1>
-        <div>
-          <button onClick={this.handleButton.bind(this)}>Greet to Bob in the morning</button>
+        <h1>Hello Redux</h1>
+        <div style={this.border}>
+          {this.props.children}
         </div>
-        <h2>{this.props.greeting.message}</h2>
       </div>
     );
   }
