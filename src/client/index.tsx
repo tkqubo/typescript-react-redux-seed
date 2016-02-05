@@ -1,19 +1,26 @@
 'use strict';
 import * as Redux from 'redux';
+/* tslint:disable */
 import * as React from 'react';
+/* tslint:enable */
 import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+/* tslint:disable */
+import thunk = require('redux-thunk');
+/* tslint:enable */
 
-import greeting from './redux/modules/greeting';
-import * as greetingActions from './redux/modules/greeting';
+import reducer from './redux/modules/index';
+import { initialState } from './redux/modules/index';
 import {App} from './containers/App';
 
-let reducers: Redux.Reducer = Redux.combineReducers({greeting});
-let store = Redux.createStore(reducers, { greeting: greetingActions.initialState });
+const createStoreWithMiddleware: typeof Redux.createStore = Redux.applyMiddleware(thunk)(Redux.createStore);
+let store: Redux.Store = createStoreWithMiddleware(reducer, initialState);
+
+let appProp: {title: string} = {title: 'Hello React'};
 
 ReactDOM.render(
   <Provider store={store}>
-    <App name="React" />
+    <App {...appProp} />
   </Provider>,
   document.getElementById('content')
 );

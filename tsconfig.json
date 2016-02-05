@@ -4,10 +4,9 @@
     "module": "commonjs",
     "target": "es5",
     "noImplicitAny": true,
-    "noFallthroughCasesInSwitch": true,
     "experimentalDecorators": true,
     "jsx": "react",
-    "sourceMap": true
+    "sourceMap": false
   },
   "exclude": [
     "node_modules"
