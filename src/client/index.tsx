@@ -1,20 +1,20 @@
 'use strict';
+import * as Redux from 'redux';
 import * as React from 'react';
-import {Component} from 'react';
 import * as ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 
-interface HelloProp {
-  name: string;
-}
+import greeting from './redux/modules/greeting';
+import * as greetingActions from './redux/modules/greeting';
+import {App} from './containers/App';
 
-class HelloReact extends Component<HelloProp, {}> {
-  render(): JSX.Element {
-    return <div>Hello {this.props.name}</div>;
-  }
-}
+let reducers: Redux.Reducer = Redux.combineReducers({greeting});
+let store = Redux.createStore(reducers, { greeting: greetingActions.initialState });
 
 ReactDOM.render(
-  <HelloReact name="React" />,
+  <Provider store={store}>
+    <App name="React" />
+  </Provider>,
   document.getElementById('content')
 );
 
