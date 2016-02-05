@@ -8,7 +8,7 @@
     "clean": "rm -rfv dist && rm -rfv {src,test}/*.{js,js.msp}",
     "build": "npm run clean && tsc && webpack --config webpack.config.js && npm run dist",
     "build:test": "npm run clean && tsc",
-    "dist": "cp -prf src/client/index.html dist/",
+    "dist": "mkdir -p dist && cp -prf src/client/index.html dist/",
     "start": "npm run build && open dist/index.html",
     "test": "npm run build:test && npm run istanbul",
     "test-not-working": "npm run build && npm run istanbul && npm run test:report",
@@ -47,6 +47,7 @@
     "sinon": "^1.17.3",
     "ts-loader": "^0.8.0",
     "tsd": "^0.6.5",
+    "tslint": "^3.3.0",
     "typescript": "^1.8.0",
     "webpack": "^1.12.12"
   },
@@ -61,6 +62,7 @@
     "react-router": "^1.0.3",
     "react-router-redux": "^3.0.0",
     "redux": "^3.2.1",
+    "tslint-loader": "^2.1.0",
     "yargs": "^3.32.0"
   }
 }

@@ -13,6 +13,12 @@ let configuration: Configuration = {
     extensions: ['', '.tsx', '.ts', '.js']
   },
   module: {
+    preLoaders: [
+      {
+        test: /\.ts(x?)$/,
+        loader: 'tslint'
+      }
+    ],
     loaders: [
       {
         test: /\.ts(x?)$/,
