@@ -6,10 +6,10 @@
   "scripts": {
     "install": "tsd --config tsd.json reinstall --overwrite",
     "clean": "rm -rfv dist && rm -rfv {src,test}/*.{js,js.msp}",
-    "build": "npm run clean && tsc && npm run dist",
+    "build": "npm run clean && tsc && webpack --config webpack.config.js && npm run dist",
     "build:test": "npm run clean && tsc",
-    "dist": "mkdir -pv dist && mv -v src/*.{js,js.map} dist/",
-    "start": "npm run build && node dist/index.js",
+    "dist": "cp -prf src/client/index.html dist/",
+    "start": "npm run build && open dist/index.html",
     "test": "npm run build:test && npm run istanbul",
     "test-not-working": "npm run build && npm run istanbul && npm run test:report",
     "test:watch": "npm run build:test && npm run istanbul:watch",
@@ -45,6 +45,7 @@
     "power-assert": "^1.2.0",
     "remap-istanbul": "^0.5.1",
     "sinon": "^1.17.3",
+    "ts-loader": "^0.8.0",
     "tsd": "^0.6.5",
     "typescript": "^1.8.0",
     "webpack": "^1.12.12"
