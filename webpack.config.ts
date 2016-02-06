@@ -2,7 +2,7 @@ import {Configuration} from 'webpack';
 
 let configuration: Configuration = {
   entry: [
-   './src/client/index.tsx'
+    './client/index.tsx',
   ],
   output: {
     path: `${__dirname}/dist`,
@@ -31,7 +31,7 @@ let configuration: Configuration = {
       },
       {
         test: /\.css$/,
-        loader: 'css?minimize'
+        loader: 'css?minimize',
       },
     ],
   },

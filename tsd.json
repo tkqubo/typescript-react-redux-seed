@@ -18,19 +18,19 @@
       "commit": "e69fe60f2d6377ea4fae539493997b098f52cad1"
     },
     "express/express.d.ts": {
-      "commit": "e69fe60f2d6377ea4fae539493997b098f52cad1"
+      "commit": "f7164a47ffe5e9a7ea2f4bec8fc4009347c64f6d"
     },
     "serve-static/serve-static.d.ts": {
-      "commit": "e69fe60f2d6377ea4fae539493997b098f52cad1"
+      "commit": "f7164a47ffe5e9a7ea2f4bec8fc4009347c64f6d"
     },
     "node/node.d.ts": {
-      "commit": "e69fe60f2d6377ea4fae539493997b098f52cad1"
+      "commit": "f7164a47ffe5e9a7ea2f4bec8fc4009347c64f6d"
     },
     "classnames/classnames.d.ts": {
       "commit": "e69fe60f2d6377ea4fae539493997b098f52cad1"
     },
     "mime/mime.d.ts": {
-      "commit": "e69fe60f2d6377ea4fae539493997b098f52cad1"
+      "commit": "f7164a47ffe5e9a7ea2f4bec8fc4009347c64f6d"
     },
     "react-redux/react-redux.d.ts": {
       "commit": "e69fe60f2d6377ea4fae539493997b098f52cad1"
@@ -42,7 +42,7 @@
       "commit": "4ec3c5bf291bc02f49eb30c1077340b235165c67"
     },
     "yargs/yargs.d.ts": {
-      "commit": "e69fe60f2d6377ea4fae539493997b098f52cad1"
+      "commit": "f7164a47ffe5e9a7ea2f4bec8fc4009347c64f6d"
     },
     "redux/redux.d.ts": {
       "commit": "4ec3c5bf291bc02f49eb30c1077340b235165c67"
@@ -175,6 +175,9 @@
     },
     "redux-actions/redux-actions.d.ts": {
       "commit": "4ec3c5bf291bc02f49eb30c1077340b235165c67"
+    },
+    "bluebird/bluebird.d.ts": {
+      "commit": "f7164a47ffe5e9a7ea2f4bec8fc4009347c64f6d"
     }
   }
 }
