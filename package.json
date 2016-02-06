@@ -5,11 +5,20 @@
   "main": "dist/index.js",
   "scripts": {
     "install": "tsd --config tsd.json reinstall --overwrite",
-    "clean": "rm -rfv dist && find {client,server,test}/**/*.js | xargs rm",
-    "build": "npm run clean && tsc && npm run dist",
+
+    "clean": "rm -rfv dist && find {client,server,webpack,test}/**/*.js | xargs rm",
+    "build": "npm run clean && tsc && npm run dist && npm run webpack",
+    "build:production": "npm run clean && tsc && npm run dist && npm run webpack:production",
     "build:test": "npm run clean && tsc",
     "dist": "mkdir -p dist && cp -prf public/* dist/",
-    "start": "npm run build && webpack --config webpack.config.js --colors --progress --watch",
+
+    "start": "npm run build && node server/index.js -d",
+    "start:development": "npm run build && node server/index.js",
+    "start:production": "npm run build:production && node server/index.js",
+
+    "webpack": "webpack --config webpack/development.js --colors --progress",
+    "webpack:production": "webpack --config webpack/production.js --colors --progress",
+
     "test": "npm run build:test && npm run istanbul",
     "test-not-working": "npm run build && npm run istanbul && npm run test:report",
     "test:watch": "npm run build:test && npm run istanbul:watch",
@@ -53,7 +62,8 @@
     "tsd": "^0.6.5",
     "tslint": "^3.3.0",
     "typescript": "^1.8.0",
-    "webpack": "^1.12.12"
+    "webpack": "^1.12.12",
+    "webpack-dev-server": "^1.14.1"
   },
   "dependencies": {
     "bluebird": "^3.2.2",
@@ -77,7 +87,6 @@
     "style-loader": "^0.13.0",
     "stylus-loader": "^1.5.1",
     "tslint-loader": "^2.1.0",
-    "webpack-dev-server": "^1.14.1",
     "yargs": "^3.32.0"
   }
 }

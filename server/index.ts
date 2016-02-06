@@ -1,18 +1,23 @@
 'use strict';
-import * as http from 'http';
 import * as yargs from 'yargs';
-import {ServerBuilder} from './serverBuilder';
+import {DefaultServerRunner} from './defaultServerRunner';
+import {WebpackDevServerRunner} from './webpackDevServerBuilder';
+import {ServerConfig} from './serverRunner';
 
-let {port} = yargs
+export type Environment = 'development'|'production';
+
+let {port, dev, environment} = yargs
+  .alias('d', 'dev')
   .alias('p', 'port')
+  .alias('e', 'environment')
   .describe('port', "Web server's port")
   .alias('h', 'help')
   .help('help')
   .argv
 ;
 
-new ServerBuilder({ port })
-  .start()
-  .then((server: http.Server) => {
-    console.log(`listened to ${server.address().port}`);
+new (dev ? WebpackDevServerRunner : DefaultServerRunner)({ port, environment })
+  .run()
+  .then((config: ServerConfig) => {
+    console.log(`listened to ${config.port}`);
   });

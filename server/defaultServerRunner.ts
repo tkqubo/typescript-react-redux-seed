@@ -4,17 +4,10 @@ import * as path from 'path';
 import * as http from 'http';
 import * as express from 'express';
 import * as Promise from 'bluebird';
+import {ServerRunner, ServerConfig} from './serverRunner';
 
-export interface ServerConfig {
-  port?: number;
-}
-
-export class ServerBuilder {
-  static get defaultPort() { return 3000; }
-
-  constructor(public config: ServerConfig = {}) { }
-
-  start(): Promise<http.Server> {
+export class DefaultServerRunner extends ServerRunner {
+  public run(): Promise<ServerConfig> {
     let html = fs.readFileSync(path.resolve(__dirname, '../public/index.html'), 'utf-8');
 
     let app: express.Express = express();
@@ -27,9 +20,8 @@ export class ServerBuilder {
 
     let server = http.createServer(app);
 
-    let port = this.config.port || ServerBuilder.defaultPort;
-    return new Promise<http.Server>((resolve: Function) => {
-      server.listen(port, resolve(server));
+    return new Promise<ServerConfig>((resolve: Function) => {
+      server.listen(this.config.port, resolve(this.config));
     });
   }
 }
