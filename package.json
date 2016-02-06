@@ -37,6 +37,7 @@
   "homepage": "https://github.com/tkqubo/typescript-react-redux-seed#readme",
   "devDependencies": {
     "codeclimate-test-reporter": "^0.3.1",
+    "css-loader": "^0.23.1",
     "espower-typescript": "^4.0.0",
     "gulp": "^3.9.0",
     "istanbul": "^0.4.2",
@@ -46,6 +47,7 @@
     "redux-actions": "^0.9.1",
     "remap-istanbul": "^0.5.1",
     "sinon": "^1.17.3",
+    "stylus-loader": "^1.5.1",
     "ts-loader": "^0.8.0",
     "tsd": "^0.6.5",
     "tslint": "^3.3.0",
@@ -70,6 +72,8 @@
     "redux-devtools-dock-monitor": "^1.0.1",
     "redux-devtools-log-monitor": "^1.0.4",
     "redux-thunk": "^1.0.3",
+    "style-loader": "^0.13.0",
+    "stylus-loader": "^1.5.1",
     "tslint-loader": "^2.1.0",
     "yargs": "^3.32.0"
   }

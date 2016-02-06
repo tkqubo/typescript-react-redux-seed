@@ -4,8 +4,8 @@ import * as Redux from 'redux';
 import * as ReactRouter from 'react-router';
 import * as ReactRedux from 'react-redux';
 
-import {RootState} from '../redux/modules/index';
-import * as greeting from '../redux/modules/greeting';
+import {RootState} from '../../redux/modules/index';
+import * as greeting from '../../redux/modules/greeting';
 
 interface IndexProps extends ReactRouter.RouteComponentProps<{}, {}>, greeting.GreetingActionCreator {
   title?: string;

@@ -8,7 +8,7 @@ import thunk = require('redux-thunk');
 /* tslint:enable */
 
 import reducer, {initialState} from './modules/index';
-import DevTools from '../containers/DevTools';
+import {DevTools} from '../containers/index';
 
 function configureStore(browserHistory: HistoryModule.History): Redux.Store {
   'use strict';

@@ -9,11 +9,8 @@ import * as history from 'history';
 import {Router, Route, IndexRoute} from 'react-router';
 
 import configureStore from './redux/configureStore';
-
-import DevTools from './containers/DevTools';
-import {App} from './containers/App';
-import {Details} from './components/Details';
-import {Index} from './components/Index';
+import {App, DevTools} from './containers/index';
+import {Index, Details} from './components/index';
 
 let browserHistory = history.createHashHistory();
 let store: Redux.Store = configureStore(browserHistory);
