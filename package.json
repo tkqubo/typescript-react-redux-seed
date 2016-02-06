@@ -5,20 +5,18 @@
   "main": "dist/index.js",
   "scripts": {
     "install": "tsd --config tsd.json reinstall --overwrite",
-
     "clean": "rm -rfv dist && find {client,server,webpack,test}/**/*.js | xargs rm",
     "build": "npm run clean && tsc && npm run dist && npm run webpack",
     "build:production": "npm run clean && tsc && npm run dist && npm run webpack:production",
     "build:test": "npm run clean && tsc",
     "dist": "mkdir -p dist && cp -prf public/* dist/",
-
     "start": "npm run build && node server/index.js -d",
     "start:development": "npm run build && node server/index.js",
-    "start:production": "npm run build:production && node server/index.js",
-
+    "start:production": "npm run build:production && sudo node server/index.js -p 80",
     "webpack": "webpack --config webpack/development.js --colors --progress",
     "webpack:production": "webpack --config webpack/production.js --colors --progress",
-
+    "pm2": "npm run build && pm2 start server/index.js --name=SEED_APP",
+    "pm2:production": "npm run build:production && sudo pm2 start server/index.js --name=SEED_APP -- -p 80",
     "test": "npm run build:test && npm run istanbul",
     "test-not-working": "npm run build && npm run istanbul && npm run test:report",
     "test:watch": "npm run build:test && npm run istanbul:watch",
@@ -74,6 +72,7 @@
     "jquery": "^2.2.0",
     "lodash": "^4.2.1",
     "object-assign": "^4.0.1",
+    "pm2": "^1.0.0",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
     "react-redux": "^4.2.1",
