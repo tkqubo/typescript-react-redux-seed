@@ -1,17 +1,38 @@
 'use strict';
+/* tslint:disable */
 import * as React from 'react';
+import * as Redux from 'redux';
+import * as ReactRedux from 'react-redux';
 import * as ReactRouter from 'react-router';
-declare const process: any;
+import { Grid, Row, Col, PageHeader } from 'react-bootstrap';
+/* tslint:enable */
 
+import {Header, Menu} from '../../components/index';
+import {RootState} from '../../redux/modules/index';
+
+@ReactRedux.connect(
+  (state: RootState) => state
+)
 export class App extends React.Component<ReactRouter.RouteComponentProps<{}, {}>, {}> {
-  private border: any = {border: 'solid #eee'};
   render(): JSX.Element {
     return (
       <div>
-        <h1>Hello Redux ({process.env.NODE_ENV})</h1>
-        <div style={this.border}>
-          {this.props.children}
-        </div>
+        <Header />
+        <Grid>
+          <Row>
+            <Col xs={12}>
+              <PageHeader>Hello TypeScript, React and Redux</PageHeader>
+              <Row>
+                <Col xs={3}>
+                  <Menu history={this.props.history} />
+                </Col>
+                <Col xs={9}>
+                  {this.props.children}
+                </Col>
+              </Row>
+            </Col>
+          </Row>
+        </Grid>
       </div>
     );
   }

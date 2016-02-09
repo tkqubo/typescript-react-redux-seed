@@ -1,3 +1,5 @@
 'use strict';
 export {Index} from './Index/Index';
-export {Details} from './Details/Details';
+export {Header} from './Header/Header';
+export {Menu} from './Menu/Menu';
+export {AsyncExample, HttpRequestExample} from './Examples/index';

@@ -1,7 +1,7 @@
 'use strict';
 import {createAction, handleActions} from 'redux-actions';
-import * as $ from 'jquery';
 /* tslint:disable */
+declare const $: JQueryStatic;
 const assign = require('object-assign');
 /* tslint:enable */
 
