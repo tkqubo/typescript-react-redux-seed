@@ -1,6 +1,7 @@
 {
   "dependencies": {
-    "bluebird": "github:unional/typed-bluebird#ce35f299e5313994c0b8e9f0f31e94e115ec791f"
+    "bluebird": "github:unional/typed-bluebird#ce35f299e5313994c0b8e9f0f31e94e115ec791f",
+    "history": "github:andrew-w-ross/typings-history#3a7e3c858f8f6893fae19e75a7267bfd926ad81b"
   },
   "devDependencies": {},
   "ambientDependencies": {

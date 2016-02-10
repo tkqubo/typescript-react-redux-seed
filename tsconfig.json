@@ -8,11 +8,9 @@
     "jsx": "react",
     "sourceMap": false
   },
-  "files": [
-    "typings/main.d.ts"
-  ],
   "exclude": [
     "node_modules",
-    "typings/"
+    "typings/browser.d.ts",
+    "typings/browser"
   ]
 }
