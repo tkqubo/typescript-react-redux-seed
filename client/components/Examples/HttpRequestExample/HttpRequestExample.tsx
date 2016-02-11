@@ -8,11 +8,10 @@ import * as ReactRouter from 'react-router';
 import {Button, Panel} from 'react-bootstrap';
 /* tslint:enable */
 
-import {RootState} from '../../../redux/modules/index';
-import * as tags from '../../../redux/modules/tags';
+import {RootState, tags, Requestable} from '../../../redux/index';
 
 interface HttpRequestExampleProps extends ReactRouter.RouteComponentProps<{}, {}>, tags.TagActionCreator {
-  tags?: tags.Tag[];
+  tags?: Requestable<tags.Tag[]>;
 }
 
 @ReactRedux.connect(
@@ -25,11 +24,13 @@ export class HttpRequestExample extends React.Component<HttpRequestExampleProps,
   }
 
   render(): JSX.Element {
-    let tags = this.props.tags.map(tag =>
-      <li key={tag.name}>
-        <b>{tag.name}</b>: <small>{tag.description}</small>
-      </li>
-    );
+    let tags = this.props.tags.payload ?
+      this.props.tags.payload.map(tag =>
+        <li key={tag.name}>
+          <b>{tag.name}</b>: <small>{tag.description}</small>
+        </li>
+      )
+      : <li><i>loading...</i></li>;
     return (
       <div className='HttpRequestExample'>
         <h4>HTTP Request Example</h4>

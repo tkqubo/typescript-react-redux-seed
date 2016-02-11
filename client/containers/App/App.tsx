@@ -8,7 +8,7 @@ import { Grid, Row, Col, PageHeader } from 'react-bootstrap';
 /* tslint:enable */
 
 import {Header, Menu} from '../../components/index';
-import {RootState} from '../../redux/modules/index';
+import {RootState} from '../../redux/index';
 
 @ReactRedux.connect(
   (state: RootState) => state

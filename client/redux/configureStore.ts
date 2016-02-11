@@ -10,7 +10,7 @@ import thunk = require('redux-thunk');
 import reducer, {initialState} from './modules/index';
 import {DevTools} from '../containers/index';
 
-function configureStore(browserHistory: HistoryModule.History): Redux.Store {
+export function configureStore(browserHistory: HistoryModule.History): Redux.Store {
   'use strict';
   let appliedMiddleware = Redux.applyMiddleware(
     ReactRouterRedux.syncHistory(browserHistory),
@@ -18,8 +18,7 @@ function configureStore(browserHistory: HistoryModule.History): Redux.Store {
   );
   let enhancer = Redux.compose(appliedMiddleware, DevTools.instrument());
   let createStore: any = Redux.createStore;
-  let store: Redux.Store = createStore(reducer, initialState, enhancer);
-  return store;
+  return createStore(reducer, initialState, enhancer);
 };
 
 export default configureStore;

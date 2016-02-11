@@ -7,8 +7,7 @@ import * as ReactRouter from 'react-router';
 import { Row, Col, ListGroup, ListGroupItem } from 'react-bootstrap';
 /* tslint:enable */
 
-import {RootState} from '../../redux/modules/index';
-import * as greeting from '../../redux/modules/greeting';
+import {RootState, greeting} from '../../redux/index';
 
 interface IndexProps extends ReactRouter.RouteComponentProps<{}, {}>, greeting.GreetingActionCreator {
   title?: string;

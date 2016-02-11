@@ -1,15 +1,12 @@
 'use strict';
-import {createAction, handleActions} from 'redux-actions';
 /* tslint:disable */
 declare const $: JQueryStatic;
 const assign = require('object-assign');
 /* tslint:enable */
+import {createRequestableActions, RequestActions} from '../requestable';
+import {tagKeys} from '../keys';
 
-// ducks type definitions
-
-const REQUEST = 'tags/list#request';
-const SUCCESS = 'tags/list#success';
-const FAILURE = 'tags/list#failure';
+// entity type
 
 export interface Tag {
   name: string;
@@ -20,22 +17,9 @@ export interface Tag {
 
 export const initialState: Tag[] = [];
 
-// reducer
-
-export const reducers = handleActions<Tag[]>(
-  {
-    [REQUEST]: () => [],
-    [SUCCESS]: (state, action) => action.payload,
-    [FAILURE]: () => [],
-  },
-  []
-);
-
 // action creators
 
-export const request = createAction(REQUEST);
-export const success = createAction(SUCCESS);
-export const failure = createAction(FAILURE);
+let actions: RequestActions<Tag[]> = createRequestableActions<Tag[]>(tagKeys);
 
 export interface TagActionCreator {
   getTags?: () => (dispatch: Redux.Dispatch) => any;
@@ -44,10 +28,10 @@ export interface TagActionCreator {
 export const tagActionCreator: TagActionCreator = {
   getTags() {
     return (dispatch: Redux.Dispatch) => {
-      dispatch(request());
+      dispatch(actions.request());
       $.get('http://petstore.swagger.io/v2/swagger.json')
-        .then((json: any) => dispatch(success(json.tags)))
-        .fail(() => dispatch(failure()))
+        .then((json: any) => dispatch(actions.success(json.tags)))
+        .fail(() => dispatch(actions.failure()))
       ;
     };
   },

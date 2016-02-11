@@ -4,25 +4,26 @@ import * as React from 'react';
 import * as Redux from 'redux';
 import * as ReactRedux from 'react-redux';
 import * as ReactRouter from 'react-router';
+import { browserHistory, hashHistory } from 'react-router'
+let history = hashHistory;
 import { Col, ListGroup, ListGroupItem } from 'react-bootstrap';
 /* tslint:enable */
 
-import {RootState} from '../../redux/modules/index';
+import {RootState} from '../../redux/index';
 
 @ReactRedux.connect(
   (state: RootState) => state
 )
 export class Menu extends React.Component<ReactRouter.RouteComponentProps<{}, {}>, {}> {
   handleIndex(): void {
-    this.props.history.push('/');
+    history.push('/');
   }
-
   handleAsyncExample(): void {
-    this.props.history.push('/async-example');
+    history.push('/async-example');
   }
 
   handleHttpRequestExample(): void {
-    this.props.history.push('/http-request-example');
+    history.push('/http-request-example');
   }
 
   render(): JSX.Element {
