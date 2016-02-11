@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "install": "typings install",
-    "clean": "rm -rfv dist && find {client,server,webpack,test} -name '*.js' | xargs rm",
+    "clean": "rm -rfv dist && find {client,server,webpack,test} -name '*.js' | while read file; do rm $file; done",
     "build": "npm run clean && tsc && npm run dist && npm run webpack",
     "build:production": "npm run clean && tsc && npm run dist && npm run webpack:production",
     "build:test": "npm run clean && tsc",
@@ -65,6 +65,7 @@
     "bluebird": "^3.2.2",
     "classnames": "^2.2.3",
     "core-decorators": "^0.11.0",
+    "deep-key-mirror": "^0.2.3",
     "express": "^4.13.4",
     "flux-standard-action": "^0.6.1",
     "history": "^2.0.0",

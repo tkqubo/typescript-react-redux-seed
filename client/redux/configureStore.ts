@@ -6,6 +6,7 @@ import * as ReactRouterRedux from 'react-router-redux';
 import * as history from 'history';
 import thunk = require('redux-thunk');
 /* tslint:enable */
+declare var __DEVELOPMENT__: boolean;
 
 import reducer, {initialState} from './modules/index';
 import {DevTools} from '../containers/index';
@@ -16,7 +17,7 @@ export function configureStore(browserHistory: HistoryModule.History): Redux.Sto
     ReactRouterRedux.syncHistory(browserHistory),
     thunk
   );
-  let enhancer = Redux.compose(appliedMiddleware, DevTools.instrument());
+  let enhancer = __DEVELOPMENT__ ? Redux.compose(appliedMiddleware, DevTools.instrument()) : appliedMiddleware;
   let createStore: any = Redux.createStore;
   return createStore(reducer, initialState, enhancer);
 };
