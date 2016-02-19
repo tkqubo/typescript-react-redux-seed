@@ -52,6 +52,14 @@ export function buildWebpackConfiguration(options: WebpackConfigurationOption = 
           test: /\.css$/,
           loader: 'css?minimize',
         },
+        {
+          test: /\.(jpe?g|png|gif|svg)$/,
+          loader: 'file',
+          query: {
+            name: '/images/[1]/[name].[ext]?[hash]',
+            regExp: '([^/]*)/[^/]*$',
+          },
+        },
       ],
     },
   };

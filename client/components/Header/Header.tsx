@@ -1,3 +1,7 @@
+/* tslint:disable */
+const logo = require('./logo.svg');
+require('./Header.styl');
+/* tslint:enable */
 import * as React from 'react';
 import * as ReactRouter from 'react-router';
 import {Link} from 'react-router';
@@ -8,10 +12,11 @@ declare const process: any;
 export class Header extends React.Component<ReactRouter.RouteComponentProps<{}, {}>, {}> {
   render(): JSX.Element {
     return (
-      <Navbar inverse>
+      <Navbar inverse className='Header'>
         <Navbar.Header>
           <Navbar.Brand>
             <Link to='/'>
+              <img src={logo} />
               TypeScript-React-Redux Seed ({process.env.NODE_ENV})
             </Link>
           </Navbar.Brand>
